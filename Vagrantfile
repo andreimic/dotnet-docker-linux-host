@@ -50,5 +50,10 @@ Vagrant.configure("2") do |config|
     vb.memory = "8192"
   end
 
-  config.vm.provision "shell", path: "provision.sh"
+  config.vm.provision "shell", path: "./provision/docker.sh"
+  config.vm.provision "shell", path: "./provision/zsh.sh"
+  config.vm.provision "shell", path: "./provision/ohmyzsh.sh"
+  config.vm.provision :shell do |shell|
+     shell.inline = "sudo chsh -s $(which zsh) ubuntu"
+  end
 end
