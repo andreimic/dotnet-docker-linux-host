@@ -51,4 +51,8 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell", path: "./provision/docker.sh"
+  config.vm.provision "shell", path: "./provision/zsh.sh"
+  config.vm.provision :shell do |shell|
+     shell.inline = "sudo chsh -s $(which zsh) ubuntu"
+  end
 end
